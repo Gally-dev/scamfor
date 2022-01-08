@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <main class="wrapper">
     <ul class="list">
       <li v-for="(risk, index) in risks" :key="risk.id" class="risk">
         <input
@@ -12,7 +12,7 @@
       </li>
     </ul>
     <div class="scamFor"></div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     check(risk, index, $event) {
-      if ($event.target.checked == true) {
+      if ($event.target.checked === true) {
         this.checked.push({
           id: index,
           risk: risk,
@@ -39,7 +39,7 @@ export default {
       } else {
         this.checked = this.checked.filter((item) => item.id !== index);
       }
-      console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
+      console.log(this.checked.sort((a,b) => (a.id - b.id)).length); //sorted as in the risk array
     },
   },
 };
