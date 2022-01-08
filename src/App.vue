@@ -1,16 +1,22 @@
 <template>
   <div class="wrapper">
     <ul class="list">
-      <li v-for="risk in risks" :key="risk.id">
-        <input type="checkbox" name="risk" id="checkbox" />
+      <li v-for="(risk, index) in risks" :key="risk.id" class="risk">
+        <input
+          type="checkbox"
+          name="risk"
+          id="checkbox"
+          @click="check(risk, index, $event)"
+        />
         <label for="risk"> {{ risk }}</label>
       </li>
     </ul>
+    <div class="scamFor"></div>
   </div>
 </template>
 
 <script>
-// import List from '@/components/List.vue';
+import { data } from "@/data.js";
 
 export default {
   name: "App",
@@ -19,17 +25,22 @@ export default {
   },
   data() {
     return {
-      risks: [
-        "upozornenie Národnej banky Slovenska, prípadne inej verejnej autority na aktivity takého subjektu",
-        "vedenie súdneho alebo administratívneho konania proti poskytovateľovi služieb",
-        "potreba zadať, zdieľať alebo komukoľvek poslať privátne kľúče, či heslo od peňaženky alebo účtu",
-        "poskytovateľ služby garantuje ziskovosť alebo návratnosť investície (osobitne v krátkom časovom horizonte)",
-        "použitie lákavých fráz „zarábajte online“ alebo „pasívny príjem“",
-        "veľkolepé tvrdenia o vlastnom kryptoaktíve „nový Bitcoin/lepší ako Bitcoin“ s garantovaním budúceho zhodnotenia",
-        "požiadavky na realizáciu ďalšej investície, pre účely výberu skoršej investície",
-        "požiadavky na zaslanie kryptoaktív na neznáme adresy peňaženiek alebo na neznáme adresy bankových účtov, ktoré nie sú asociované s poskytovateľom predmetných služieb",
-      ],
+      risks: data, //imported from data.js
+      checked: [],
     };
+  },
+  methods: {
+    check(risk, index, $event) {
+      if ($event.target.checked == true) {
+        this.checked.push({
+          id: index,
+          risk: risk,
+        });
+      } else {
+        this.checked = this.checked.filter((item) => item.id !== index);
+      }
+      console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
+    },
   },
 };
 </script>
@@ -48,7 +59,82 @@ export default {
   color: #2c3e50;
   margin-top: 60px; */
 }
-#checkbox{
-  margin: .5rem;
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+#checkbox {
+  margin: 0.5rem;
+}
+.risk {
+  display: flex;
+  align-items: center;
+}
+.scamFor {
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%;
+}
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+    border-radius: 50%;
+  }
+  100% {
+    height: 40px;
+    width: 40px;
+    /* margin-left: -80px;
+    margin-top: -80px; */
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+#checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+  border-radius: 100px;
+}
+#checkbox:hover {
+  background: #9faab7;
+}
+#checkbox:checked {
+  background: #40e0d0;
+}
+#checkbox:checked::before {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  content: "✔";
+  display: inline-block;
+  font-size: 0.9rem;
+  text-align: center;
+  /* line-height: 20px; */
+  border-radius: 50%;
+}
+#checkbox:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: "";
 }
 </style>
