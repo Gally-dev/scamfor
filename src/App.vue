@@ -1,20 +1,16 @@
 <template>
-  <main class="wrapper">
     <ul class="list">
       <li v-for="(risk, index) in risks" :key="risk.id" class="risk">
-        
           <input
             type="checkbox"
             name="risk"
             id="checkbox"
-            @click="check(risk, index, $event)"
+            @click="check(risk, index, $event), changeColor()"
           />
           <label for="risk"> {{ risk }}</label>
-        
       </li>
     </ul>
-    <div class="scamFor"></div>
-  </main>
+    <div class="scamFor" ref="scamFor"></div>
 </template>
 
 <script>
@@ -32,6 +28,7 @@ export default {
     };
   },
   methods: {
+    // count of checked checkboxes
     check(risk, index, $event) {
       if ($event.target.checked === true) {
         this.checked.push({
@@ -41,8 +38,24 @@ export default {
       } else {
         this.checked = this.checked.filter((item) => item.id !== index);
       }
-      console.log(this.checked.sort((a,b) => (a.id - b.id)).length); //sorted as in the risk array
+      console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
     },
+
+    //change color if risk conditions are met
+    changeColor(){
+      if(this.checked.length == 0){
+        this.$refs.scamFor.style.backgroundColor = "green"
+      }else if(this.checked.length <= 3){
+        this.$refs.scamFor.style.backgroundColor = "yellow"
+      }else if(this.checked.length <= 5){
+        this.$refs.scamFor.style.backgroundColor = "orange"
+      }else{
+        this.$refs.scamFor.style.backgroundColor = "red"
+      }
+    },
+  },
+  mounted () {
+    this.changeColor();
   },
 };
 </script>
@@ -54,17 +67,11 @@ export default {
   box-sizing: border-box;
 }
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
-}
-.wrapper {
   display: flex;
   align-items: center;
+  margin: 0.625rem ;
 }
+
 #checkbox {
   margin: 0.5rem;
 }
@@ -75,7 +82,7 @@ export default {
 .scamFor {
   width: 100px;
   height: 100px;
-  background: red;
+  background: green;
   border-radius: 50%;
 }
 @keyframes click-wave {
