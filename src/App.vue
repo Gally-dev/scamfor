@@ -2,13 +2,15 @@
   <main class="wrapper">
     <ul class="list">
       <li v-for="(risk, index) in risks" :key="risk.id" class="risk">
-        <input
-          type="checkbox"
-          name="risk"
-          id="checkbox"
-          @click="check(risk, index, $event)"
-        />
-        <label for="risk"> {{ risk }}</label>
+        
+          <input
+            type="checkbox"
+            name="risk"
+            id="checkbox"
+            @click="check(risk, index, $event)"
+          />
+          <label for="risk"> {{ risk }}</label>
+        
       </li>
     </ul>
     <div class="scamFor"></div>
