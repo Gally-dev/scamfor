@@ -5,7 +5,7 @@
             type="checkbox"
             name="risk"
             id="checkbox"
-            @click="check(risk, index, $event), changeColor()"
+            @click="check(risk, index, $event); changeColor()"
           />
           <label for="risk"> {{ risk }}</label>
       </li>
@@ -38,25 +38,25 @@ export default {
       } else {
         this.checked = this.checked.filter((item) => item.id !== index);
       }
-      console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
+      // console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
     },
 
     //change color if risk conditions are met
     changeColor(){
-      if(this.checked.length == 0){
+      let checkedRisks = this.checked.length
+
+      if(checkedRisks == 0){
         this.$refs.scamFor.style.backgroundColor = "green"
-      }else if(this.checked.length <= 3){
+      }else if(checkedRisks <= 3){
         this.$refs.scamFor.style.backgroundColor = "yellow"
-      }else if(this.checked.length <= 5){
+      }else if(checkedRisks <= 5){
         this.$refs.scamFor.style.backgroundColor = "orange"
       }else{
         this.$refs.scamFor.style.backgroundColor = "red"
       }
     },
   },
-  mounted () {
-    this.changeColor();
-  },
+ 
 };
 </script>
 
@@ -96,8 +96,6 @@ export default {
   100% {
     height: 40px;
     width: 40px;
-    /* margin-left: -80px;
-    margin-top: -80px; */
     opacity: 0;
     border-radius: 50%;
   }
