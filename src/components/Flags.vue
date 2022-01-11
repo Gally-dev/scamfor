@@ -28,6 +28,7 @@ export default {};
   height: 80px;
   border-radius: 50%;
   margin: 10px;
+  box-shadow: 1px 1px 5px rgba(17, 17, 17, 0.5);
  
   display: flex;
   justify-content: center;

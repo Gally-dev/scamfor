@@ -6,10 +6,7 @@
         type="checkbox"
         name="risk"
         id="checkbox"
-        @click="
-          check();
-          changeColor();
-        "
+        @click="check(); changeColor();"
       />
       <label for="risk"> {{ risk }}</label>
     </li>
@@ -43,7 +40,6 @@ export default {
       let count = 0;
       const checkbox = this.$refs.checkbox;
       checkbox.forEach((checkbox) => {
-        // if(!checkbox.checked) this.count = 0  
         if (checkbox.checked) count++ 
         this.count = count;
       });
@@ -53,10 +49,11 @@ export default {
     ///change color if risk conditions are met
     //
     changeColor() {
-      if (this.count == 0) return this.$refs.scamFor.style.backgroundColor = "green";
-      if (this.count < 3) return this.$refs.scamFor.style.backgroundColor = "yellow";
-      if (this.count < 5) return this.$refs.scamFor.style.backgroundColor = "orange";
-      if(this.count >=5) return this.$refs.scamFor.style.backgroundColor = "red";
+      const scamFor = this.$refs.scamFor;
+      if (this.count == 0) return scamFor.style.backgroundColor = "green";
+      if (this.count < 3) return scamFor.style.backgroundColor = "yellow";
+      if (this.count < 5) return scamFor.style.backgroundColor = "orange";
+      if(this.count >=5) return scamFor.style.backgroundColor = "red";
     },
   },
 };
@@ -69,6 +66,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+
 #app {
   display: flex;
   flex-direction: column;
@@ -87,6 +85,7 @@ export default {
   width: 100px;
   height: 100px;
   background: green;
+  box-shadow: 1px 1px 5px rgba(17, 17, 17, 0.5);
   border-radius: 50%;
 }
 
