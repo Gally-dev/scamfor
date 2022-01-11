@@ -11,21 +11,24 @@
       <label for="risk"> {{ risk }}</label>
     </li>
   </ul>
-  <div class="scamFor" ref="scamFor"></div>
+
+  <div class="scamFor" ref="scamFor">
+    <p>{{ changeText() }}</p> 
+  </div>
 
   <flags />
 </template>
 
 <script>
-import { data } from "@/data.js";
+import { data, textInFlags } from "@/data.js";
 import Flags from "@/components/Flags.vue";
 
 export default {
   name: "App",
   components: {
     Flags,
-    // List,
   },
+
   data() {
     return {
       risks: data, //imported from data.js
@@ -55,6 +58,15 @@ export default {
       if (this.count < 5) return scamFor.style.backgroundColor = "orange";
       if(this.count >=5) return scamFor.style.backgroundColor = "red";
     },
+    //
+    /// change text in scamFor...textInFlags from data.js
+    //
+    changeText(){
+      if (this.count == 0) return textInFlags[0];
+      if (this.count < 3) return textInFlags[1];
+      if (this.count < 5) return textInFlags[2];
+      if(this.count >=5) return textInFlags[3];
+    }
   },
 };
 
@@ -87,6 +99,11 @@ export default {
   background: green;
   box-shadow: 1px 1px 5px rgba(17, 17, 17, 0.5);
   border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
 }
 
 #checkbox {

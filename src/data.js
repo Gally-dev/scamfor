@@ -21,3 +21,12 @@ export const data = [
   "poskytovanie služby prenájmu výpočtového výkonu za účelom ťažby kryptoaktív",
   "súčasťou kryptoaktíva ponúkaného projektu je účasť v ICO (Initial Coin Offering), STO (Security Token Offering) alebo iného modelu na zhromažďovanie peňažných prostriedkov alebo kryptoaktív zo strany verejnosti",
 ];
+//
+/// TEXT IN FLAGS
+//
+export const textInFlags = [
+  "ziadne riziko",
+  "male riziko",
+  "stredne riziko",
+  "velke riziko",
+];
