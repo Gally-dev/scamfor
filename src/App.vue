@@ -1,63 +1,66 @@
 <template>
-    <ul class="list">
-      <li v-for="(risk, index) in risks" :key="risk.id" class="risk">
-          <input
-            type="checkbox"
-            name="risk"
-            id="checkbox"
-            @click="check(risk, index, $event); changeColor()"
-          />
-          <label for="risk"> {{ risk }}</label>
-      </li>
-    </ul>
-    <div class="scamFor" ref="scamFor"></div>
+  <ul class="list">
+    <li v-for="risk in risks" :key="risk.id" class="risk">
+      <input
+        ref="checkbox"
+        type="checkbox"
+        name="risk"
+        id="checkbox"
+        @click="
+          check();
+          changeColor();
+        "
+      />
+      <label for="risk"> {{ risk }}</label>
+    </li>
+  </ul>
+  <div class="scamFor" ref="scamFor"></div>
+
+  <flags />
 </template>
 
 <script>
 import { data } from "@/data.js";
+import Flags from "@/components/Flags.vue";
 
 export default {
   name: "App",
   components: {
+    Flags,
     // List,
   },
   data() {
     return {
       risks: data, //imported from data.js
-      checked: [],
+      count: '',
     };
   },
   methods: {
-    // count of checked checkboxes
-    check(risk, index, $event) {
-      if ($event.target.checked === true) {
-        this.checked.push({
-          id: index,
-          risk: risk,
-        });
-      } else {
-        this.checked = this.checked.filter((item) => item.id !== index);
-      }
-      // console.log(this.checked.sort((a,b) => (a.id - b.id))); //sorted as in the risk array
+    //
+    /// check count of checked inputs
+    //
+    check() {
+      let count = 0;
+      const checkbox = this.$refs.checkbox;
+      checkbox.forEach((checkbox) => {
+        // if(!checkbox.checked) this.count = 0  
+        if (checkbox.checked) count++ 
+        this.count = count;
+      });
+      console.log(this.count);
     },
-
-    //change color if risk conditions are met
-    changeColor(){
-      let checkedRisks = this.checked.length
-
-      if(checkedRisks == 0){
-        this.$refs.scamFor.style.backgroundColor = "green"
-      }else if(checkedRisks <= 3){
-        this.$refs.scamFor.style.backgroundColor = "yellow"
-      }else if(checkedRisks <= 5){
-        this.$refs.scamFor.style.backgroundColor = "orange"
-      }else{
-        this.$refs.scamFor.style.backgroundColor = "red"
-      }
+    //
+    ///change color if risk conditions are met
+    //
+    changeColor() {
+      if (this.count == 0) return this.$refs.scamFor.style.backgroundColor = "green";
+      if (this.count < 3) return this.$refs.scamFor.style.backgroundColor = "yellow";
+      if (this.count < 5) return this.$refs.scamFor.style.backgroundColor = "orange";
+      if(this.count >=5) return this.$refs.scamFor.style.backgroundColor = "red";
     },
   },
- 
 };
+
 </script>
 
 <style>
@@ -68,8 +71,9 @@ export default {
 }
 #app {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 0.625rem ;
+  margin: 0.625rem;
 }
 
 #checkbox {
@@ -85,21 +89,7 @@ export default {
   background: green;
   border-radius: 50%;
 }
-@keyframes click-wave {
-  0% {
-    height: 40px;
-    width: 40px;
-    opacity: 0.35;
-    position: relative;
-    border-radius: 50%;
-  }
-  100% {
-    height: 40px;
-    width: 40px;
-    opacity: 0;
-    border-radius: 50%;
-  }
-}
+
 #checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -134,14 +124,7 @@ export default {
   display: inline-block;
   font-size: 0.9rem;
   text-align: center;
-  /* line-height: 20px; */
   border-radius: 50%;
 }
-#checkbox:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
-  background: #40e0d0;
-  content: "";
-}
+
 </style>
