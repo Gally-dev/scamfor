@@ -3,8 +3,10 @@
     <div class="navbar-container">
      
       <div class="logo-wrap">
-        <img src="../../public/img/logo.svg" alt="logo">
-        <img src="../../public/img/blockchain.svg" alt="logo-text">
+        <a href="https://blockchainslovakia.sk/">
+          <img src="../../public/img/logo.svg" alt="logo">
+          <img src="../../public/img/blockchain.svg" alt="logo-text">
+        </a> 
       </div>
      
       <h1 class="navbar-item">SCAMAFÓR je nezávislá iniciatíva <br> O.z. Blockchain Slovakia</h1>
@@ -38,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.logo-wrap{
+.logo-wrap a{
   display: flex;
 }
 .logo-wrap :first-child{
