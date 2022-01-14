@@ -1,4 +1,18 @@
 <template>
+<main class="wrapper">
+  <HeaderScam/>
+
+  <div class="post-header">
+    <div class="post-header-text">
+      <h1>SCAM <span>AFÓR</span> </h1>
+      <p>Kliknite na rizikové faktory a SCAMfór sa zmení farbou podľa rizika</p>
+    </div>
+    <div class="post-header-colors">
+
+    </div>
+  </div>
+
+
   <ul class="list">
     <li v-for="risk in risks" :key="risk.id" class="risk">
       <input
@@ -17,15 +31,20 @@
   </div>
 
   <flags />
+
+</main>
 </template>
 
 <script>
 import { data, textInFlags } from "@/data.js";
+//components
+import HeaderScam from "@/components/HeaderScam.vue";
 import Flags from "@/components/Flags.vue";
 
 export default {
   name: "App",
   components: {
+    HeaderScam,
     Flags,
   },
 
@@ -73,18 +92,27 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+html{
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+body{
+  color: #E5E5E5;
+}
 
 #app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0.625rem;
+  /* margin: 0.625rem; */
 }
+.wrapper{
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 
 #checkbox {
   margin: 0.5rem;
