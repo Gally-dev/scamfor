@@ -1,16 +1,9 @@
 <template>
 <main class="wrapper">
+  
   <HeaderScam/>
-
-  <div class="post-header">
-    <div class="post-header-text">
-      <h1>SCAM <span>AFÓR</span> </h1>
-      <p>Kliknite na rizikové faktory a SCAMfór sa zmení farbou podľa rizika</p>
-    </div>
-    <div class="post-header-colors">
-
-    </div>
-  </div>
+  <PostHeader/>
+  
 
 
   <ul class="list">
@@ -39,12 +32,14 @@
 import { data, textInFlags } from "@/data.js";
 //components
 import HeaderScam from "@/components/HeaderScam.vue";
+import PostHeader from "@/components/PostHeader.vue";
 import Flags from "@/components/Flags.vue";
 
 export default {
   name: "App",
   components: {
     HeaderScam,
+    PostHeader,
     Flags,
   },
 
