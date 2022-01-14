@@ -25,8 +25,8 @@ export const data = [
 /// TEXT IN FLAGS
 //
 export const textInFlags = [
-  "ziadne riziko",
-  "male riziko",
-  "stredne riziko",
-  "velke riziko",
+  "Nepredstavuje riziko",
+  "Predstavuje malé riziko",
+  "Predstavuje stredné riziko",
+  "Predstavuje veľké riziko",
 ];
