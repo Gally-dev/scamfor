@@ -24,7 +24,7 @@ export default {};
 <style lang="css" scoped>
 .post-header{
     height: 354px;
-    color:#F6F6FC;
+    background:#F6F6FC;
 
     display: flex;
     align-items: center;
