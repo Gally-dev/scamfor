@@ -78,4 +78,38 @@ h1 span{
 .flags:nth-child(2){background:#FFCD1B;}
 .flags:nth-child(3){background:#FF833E;}
 .flags:nth-child(4){background:#FF002E; margin: 0;}
+
+/* media queries */
+@media only screen and (max-width: 1024px) {
+  .post-header-wrap {
+    flex-direction: column-reverse;
+  }
+  .post-header-colors{
+      margin-bottom: 20px;
+  }
+  @media only screen and (max-width: 768px){
+      .flags{
+    width: 90px;
+    height: 90px;
+    }
+  }
+  @media only screen and (max-width: 500px){
+      .flags{
+          width: 40px;
+          height: 40px;
+          margin-right: 5px;
+      }
+      .post-header-text h1{
+          font-size: 2.75rem; /*44px */
+          line-height: 54px;
+      }
+      .post-header p{
+          font-size: 20px;
+          line-height: 30px;
+      }
+      .post-header-colors p{
+          font-size: 1rem;
+      }
+  }
+}
 </style>

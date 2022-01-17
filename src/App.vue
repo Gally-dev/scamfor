@@ -1,10 +1,13 @@
 <template>
+  <HeaderScam/>
+
   <main class="wrapper">
-    <HeaderScam/>
     <PostHeader/>
     <CheckedInputs/>
     <Warning />
   </main>
+
+  <FooterScam />
 </template>
 
 <script>
@@ -14,6 +17,7 @@ import HeaderScam from "@/components/HeaderScam.vue";
 import PostHeader from "@/components/PostHeader.vue";
 import CheckedInputs from "@/components/CheckedInputs.vue";
 import Warning from "@/components/Warning.vue";
+import FooterScam from "@/components/FooterScam.vue";
 
 export default {
   name: "App",
@@ -22,6 +26,7 @@ export default {
     PostHeader,
     CheckedInputs,
     Warning,
+    FooterScam,
   },
 
 };
@@ -44,6 +49,8 @@ body{
 
 #app {
   /* margin: 0.625rem; */
+  max-width: 1600px;
+  margin: 0 auto;
 }
 .wrapper{
   max-width: 1600px;

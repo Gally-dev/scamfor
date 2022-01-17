@@ -1,5 +1,5 @@
 <template>
-    <header class="navbar">
+  <header class="navbar">
     <div class="navbar-container">
      
       <div class="logo-wrap">
@@ -53,6 +53,18 @@ margin-right: 10px;
   letter-spacing: 0.02em;
   text-align: right;
   color: #ABBCE9;
+}
+/* media queries */
+@media only screen and (max-width: 500px){
+  .logo-wrap{
+    width: 145px;
+  }
+  .navbar-item{
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 2%;
+
+  }
 }
 
 </style>

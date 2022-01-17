@@ -6,11 +6,11 @@
                 <p class="count" v-show="count > 0">{{count}}</p> 
             </div>
 
+
             <div class="list-wrap">
                 <h2>Zoznam rizikových faktorov <img src="../../public/img/flag.svg" alt="flag"> </h2>
                 <ul class="list">
-
-                    <li i v-for="risk in risks" :key="risk.id" class="risk">
+                    <li  v-for="risk in risks" :key="risk.id" class="risk">
                         <input
                             ref="checkbox"
                             type="checkbox"
@@ -94,13 +94,29 @@
     justify-content: space-between;
 }
 .scamFor{
+  /* display: none; */
   width: 170px;
   height: 170px;
   border-radius: 50%;
   background: #20D267;
+  /* position: fixed; */
   position: sticky;
+  position: -webkit-sticky;
   top: 20px;
+  
   margin-top: 82px;
+}
+.scamFor-mobile{
+  display: none;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 66px;
+    background: red;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+ 
 }
 .risk-options{
   color: #191642;
@@ -136,7 +152,8 @@ label{
   line-height: 28px;
   color: #191642;
   display: block;
-  width: 516px;
+  /* width: 516px; */
+  width: 100%;
   position: relative;
   top: -10px;
 }
@@ -180,65 +197,54 @@ input#checkbox{
   border-radius: 1px;
 }
 
-/* Warning */
+@media only screen and (max-width: 1024px) {
+  .inputs-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    padding: 84px 16px 0 16px;
+    }
+    
+  }
+  @media only screen and (max-width: 768px) {
+    .scamFor{
+      width: 150px;
+      height: 150px;
+    }
+    .risk{
+      margin-bottom: 20px;
+    }
+  }
 
+@media only screen and (max-width: 620px){
+  
+  .inputs-wrapper{
+    display: block;
+    /* position: static; */
+    /* padding-top: 44px; */
+    /* flex-direction: column-reverse; */
+  }
+  .scamFor{
+    display: none;
+    margin-top: 0;
+    /* position: fixed; */
+    position: absolute;
+    /* top: 0; */
+    bottom: 0;
+    left: 0;
+    
+  }
+  .list-wrap{
+    width: 100%;
+  }
+  .warning{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px){
+  label{
+    font-size:16px ;
+    line-height: 26px;
+  }
+}
 
-
-/* old css */
-/* #checkbox {
-  margin: 0.5rem;
-}
-.risk {
-  display: flex;
-  align-items: center;
-}
-.scamFor {
-  width: 100px;
-  height: 100px;
-  background: green;
-  box-shadow: 1px 1px 5px rgba(17, 17, 17, 0.5);
-  border-radius: 50%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1rem;
-}
-
-#checkbox {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  z-index: 1000;
-  border-radius: 100px;
-}
-#checkbox:hover {
-  background: #9faab7;
-}
-#checkbox:checked {
-  background: #40e0d0;
-}
-#checkbox:checked::before {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  content: "✔";
-  display: inline-block;
-  font-size: 0.9rem;
-  text-align: center;
-  border-radius: 50%;
-} */
 </style>
