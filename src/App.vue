@@ -3,6 +3,7 @@
     <HeaderScam/>
     <PostHeader/>
     <CheckedInputs/>
+    <Warning />
   </main>
 </template>
 
@@ -12,6 +13,7 @@
 import HeaderScam from "@/components/HeaderScam.vue";
 import PostHeader from "@/components/PostHeader.vue";
 import CheckedInputs from "@/components/CheckedInputs.vue";
+import Warning from "@/components/Warning.vue";
 
 export default {
   name: "App",
@@ -19,6 +21,7 @@ export default {
     HeaderScam,
     PostHeader,
     CheckedInputs,
+    Warning,
   },
 
 };

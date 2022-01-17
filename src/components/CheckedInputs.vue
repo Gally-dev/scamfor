@@ -3,7 +3,7 @@
         <div class="inputs-wrapper">
             <div class="scamFor" ref="scamFor">
                 <p class="risk-options">{{ changeText() }}</p>
-                <p class="count" v-if="count > 0">{{count}}</p> 
+                <p class="count" v-show="count > 0">{{count}}</p> 
             </div>
 
             <div class="list-wrap">
@@ -123,7 +123,9 @@
     transform: translate(50%, -50%);
   }
   .list-wrap{
-    width: 560px;
+    /* width: 560px; */
+    /* width: 60%; */
+    width: 66%;
 
   }
 .list{
@@ -134,7 +136,9 @@ label{
   line-height: 28px;
   color: #191642;
   display: block;
-  max-width: 516px;
+  width: 516px;
+  position: relative;
+  top: -10px;
 }
 
 /* right side */
@@ -155,7 +159,7 @@ input#checkbox{
   position: relative;
   width: 22px;
   height: 22px;
-  margin-top: 10px;
+ 
   -webkit-appearance: none;
   appearance: none;
   border: 1px solid #AFAFC1;
