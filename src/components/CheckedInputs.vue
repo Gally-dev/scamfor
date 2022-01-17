@@ -224,11 +224,10 @@ input#checkbox{
     /* flex-direction: column-reverse; */
   }
   .scamFor{
-    display: none;
+    /* display: none; */
     margin-top: 0;
-    /* position: fixed; */
-    position: absolute;
-    /* top: 0; */
+    position: fixed;
+    top: unset;
     bottom: 0;
     left: 0;
     
