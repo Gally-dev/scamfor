@@ -1,10 +1,13 @@
 <template>
     <section class="inputs">
         <div class="inputs-wrapper">
+
+          <div class="scamFor-wrapper">
             <div class="scamFor" ref="scamFor">
                 <p class="risk-options">{{ changeText() }}</p>
                 <p class="count" v-show="count > 0">{{count}}</p> 
             </div>
+          </div>
 
 
             <div class="list-wrap">
@@ -168,7 +171,6 @@ label{
 }
   .risk{
     display: inline-flex;
-    /* justify-content: space-between; */
     align-items: flex-start;
     margin-bottom: 40px;
   }
@@ -219,18 +221,39 @@ input#checkbox{
   
   .inputs-wrapper{
     display: block;
-    /* position: static; */
-    /* padding-top: 44px; */
-    /* flex-direction: column-reverse; */
+    padding-top: 44px;
+    
   }
-  .scamFor{
-    /* display: none; */
-    margin-top: 0;
+  .scamFor-wrapper{
+    width: 100%;
+    height: 66px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(17, 17, 17, 0.25);
+
     position: fixed;
-    top: unset;
     bottom: 0;
     left: 0;
+
+    z-index: 2;
+  }
+  .scamFor{
+    margin-top: 0;
+    position: relative;
+    top: 10.5px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
     
+  }
+  .risk-options{
+    width: 230px;
+    bottom: 7px;
+    left:50px;
+    font-size: 1.125rem; /*18px */
+    line-height: 30px;
+  }
+  .count{
+    font-size: 1rem;
   }
   .list-wrap{
     width: 100%;
@@ -241,7 +264,7 @@ input#checkbox{
 }
 @media only screen and (max-width: 500px){
   label{
-    font-size:16px ;
+    font-size:1rem ; /*16px*/
     line-height: 26px;
   }
 }
