@@ -3,7 +3,7 @@
     <div class="navbar-container">
      
       <div class="logo-wrap">
-        <a href="https://blockchainslovakia.sk/">
+        <a href="https://blockchainslovakia.sk/" target="_blank" rel="noopener noreferrer">
           <img src="../../public/img/logo.svg" alt="logo">
           <img src="../../public/img/blockchain.svg" alt="logo-text">
         </a> 
