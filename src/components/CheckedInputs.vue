@@ -57,7 +57,7 @@
         if (checkbox.checked) count++ 
         this.count = count;
       });
-      console.log(this.count);
+      
     },
     //
     ///change color if risk conditions are met
