@@ -143,7 +143,6 @@
   }
   .list-wrap{
     /* width: 560px; */
-    /* width: 60%; */
     width: 66%;
 
   }
@@ -155,7 +154,7 @@ label{
   line-height: 28px;
   color: #191642;
   display: block;
-  /* width: 516px; */
+  padding-left: 22px;
   width: 100%;
   position: relative;
   top: -10px;
@@ -183,7 +182,7 @@ input#checkbox{
   appearance: none;
   border: 1px solid #AFAFC1;
   border-radius: 2px;
-  margin-right:22px;
+  
 }
 
 #checkbox:checked::before {
